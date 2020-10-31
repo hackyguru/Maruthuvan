@@ -11,10 +11,33 @@ final Map<Widget, String> pages = {
   Icon(Icons.call_split, size: 30): '/chatbot',
 };
 
-class RouteGenerator {
-  static generateRoute(RouteSettings settings) {
-    final args = settings.arguments;
+final Map<String, Widget> screens = {
+  '/': HomeScreen(),
+  '/explore': Explore(),
+  '/detect': Detect(),
+  '/chatbot': Chatbot()
+};
 
+class TabNavigator extends StatelessWidget {
+  TabNavigator({this.navigatorKey, this.page});
+  final GlobalKey<NavigatorState> navigatorKey;
+  final String page;
+
+  @override
+  Widget build(BuildContext context) {
+    return Navigator(
+        key: navigatorKey,
+        initialRoute: '/',
+        onGenerateRoute: (routeSettings) {
+          return MaterialPageRoute(builder: (context) => screens[this.page]);
+        });
+  }
+}
+
+class RouteGenerator {
+  static Route<dynamic> generateRoute(RouteSettings settings) {
+    final args = settings.arguments;
+    print("###$args");
     switch (settings.name) {
       case '/':
         return MaterialPageRoute(builder: (_) => HomeScreen());

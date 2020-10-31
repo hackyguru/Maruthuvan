@@ -1,4 +1,3 @@
-import 'package:Maruthuvan/utils/customNavBar.dart';
 import 'package:flutter/material.dart';
 
 class Detect extends StatelessWidget {
@@ -7,7 +6,6 @@ class Detect extends StatelessWidget {
     return Scaffold(
       body: Text("Incomplete detect"),
       backgroundColor: Colors.greenAccent,
-      bottomNavigationBar: NavCustom(),
     );
   }
 }

@@ -1,4 +1,3 @@
-import 'package:Maruthuvan/utils/customNavBar.dart';
 import 'package:flutter/material.dart';
 
 class Explore extends StatelessWidget {
@@ -7,7 +6,6 @@ class Explore extends StatelessWidget {
     return Scaffold(
       body: Center(child: Text("Yup Explore here")),
       backgroundColor: Colors.greenAccent,
-      bottomNavigationBar: NavCustom(),
     );
   }
 }

@@ -1,4 +1,3 @@
-import 'package:Maruthuvan/utils/customNavBar.dart';
 import 'package:flutter/material.dart';
 
 class Chatbot extends StatelessWidget {
@@ -7,7 +6,6 @@ class Chatbot extends StatelessWidget {
     return Scaffold(
       body: Text("Chatty here"),
       backgroundColor: Colors.greenAccent,
-      bottomNavigationBar: NavCustom(),
     );
   }
 }

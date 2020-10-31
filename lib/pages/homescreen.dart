@@ -1,4 +1,3 @@
-import 'package:Maruthuvan/utils/customNavBar.dart';
 import 'package:flutter/material.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -9,7 +8,6 @@ class HomeScreen extends StatelessWidget {
           backgroundColor: Colors.greenAccent,
           body: Center(child: Text("Yup Home here"))),
       backgroundColor: Colors.greenAccent,
-      bottomNavigationBar: NavCustom(),
     );
   }
 }
