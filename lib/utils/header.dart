@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:Maruthuvan/utils/constants.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:Maruthuvan/pages/homescreen.dart';
 
-class HeaderWithSearchBox extends StatelessWidget {
+List<String> common = ["cold", "headache", "vomiting", "legpain"];
+List<String> symptomList = ["Fever"];
+
+class HeaderWithSearchBox extends StatefulWidget {
   const HeaderWithSearchBox({
     Key key,
     @required this.size,
@@ -11,11 +15,17 @@ class HeaderWithSearchBox extends StatelessWidget {
   final Size size;
 
   @override
+  _HeaderWithSearchBoxState createState() => _HeaderWithSearchBoxState();
+}
+
+class _HeaderWithSearchBoxState extends State<HeaderWithSearchBox> {
+  final TextEditingController _controller = new TextEditingController();
+  @override
   Widget build(BuildContext context) {
     return Container(
       margin: EdgeInsets.only(bottom: kDefaultPadding * 2.5),
       // It will cover 20% of our total height
-      height: size.height * 0.2,
+      height: widget.size.height * 0.2,
       child: Stack(
         children: <Widget>[
           Container(
@@ -24,7 +34,7 @@ class HeaderWithSearchBox extends StatelessWidget {
               right: kDefaultPadding,
               bottom: 36 + kDefaultPadding,
             ),
-            height: size.height * 0.2 - 27,
+            height: widget.size.height * 0.2 - 27,
             decoration: BoxDecoration(
               color: kPrimaryColor,
               borderRadius: BorderRadius.only(
@@ -66,7 +76,13 @@ class HeaderWithSearchBox extends StatelessWidget {
                 children: <Widget>[
                   Expanded(
                     child: TextField(
-                      onChanged: (value) {},
+                      onSubmitted: (value) {
+                        setState(() {
+                          _controller.text = "";
+                          symptomList.add(value);
+                        });
+                      },
+                      controller: _controller,
                       decoration: InputDecoration(
                         hintText: "Select your symptoms",
                         hintStyle: TextStyle(
@@ -74,16 +90,21 @@ class HeaderWithSearchBox extends StatelessWidget {
                         ),
                         enabledBorder: InputBorder.none,
                         focusedBorder: InputBorder.none,
-                        // surffix isn't working properly  with SVG
-                        // thats why we use row
-                        // suffixIcon: SvgPicture.asset("assets/icons/search.svg"),
                       ),
                     ),
                   ),
-                  IconButton(
-                    icon: Icon(Icons.search),
-                    onPressed: () {},
-                  )
+                  PopupMenuButton<String>(
+                    icon: Icon(Icons.arrow_downward),
+                    onSelected: (String value) {
+                      _controller.text = value;
+                    },
+                    itemBuilder: (BuildContext context) {
+                      return common.map<PopupMenuItem<String>>((String value) {
+                        return new PopupMenuItem(
+                            child: new Text(value), value: value);
+                      }).toList();
+                    },
+                  ),
                 ],
               ),
             ),
