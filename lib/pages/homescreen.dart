@@ -70,8 +70,9 @@ class Landing extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: Colors.grey,
+        backgroundColor: Colors.white,
         appBar: AppBar(
+          title: Text("Detected: Common Fever"),
           elevation: 0,
           backgroundColor: Color(0xFF0C9869),
         ),
@@ -83,7 +84,7 @@ class Landing extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
                 Image.asset(
-                  "assets/sample.png",
+                  "assets/sample.jpg",
                   height: 300,
                 ),
                 Text(
