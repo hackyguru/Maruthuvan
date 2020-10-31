@@ -15,7 +15,6 @@ class MainApp extends StatefulWidget {
 }
 
 class _MainAppState extends State<MainApp> {
-  final List<Widget> iconsList = pages.keys.toList();
   final PageController _pageController = PageController();
 
   @override
@@ -28,7 +27,7 @@ class _MainAppState extends State<MainApp> {
     return Scaffold(
       body: PageView(
           controller: _pageController,
-          children: screens.values.toList(),
+          children: pages.values.toList(),
           onPageChanged: (int index) {
             setState(() {
               _pageController.jumpToPage(index);
@@ -37,7 +36,7 @@ class _MainAppState extends State<MainApp> {
       bottomNavigationBar: CurvedNavigationBar(
         height: 50.0,
         index: 0,
-        items: iconsList,
+        items: pages.keys.toList(),
         color: Colors.white,
         buttonBackgroundColor: Colors.white,
         backgroundColor: Colors.greenAccent,
