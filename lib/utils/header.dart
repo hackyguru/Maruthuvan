@@ -1,18 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:Maruthuvan/utils/constants.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:Maruthuvan/pages/homescreen.dart';
 
 List<String> common = ["cold", "headache", "vomiting", "legpain"];
 List<String> symptomList = ["Fever"];
 
 class HeaderWithSearchBox extends StatefulWidget {
-  const HeaderWithSearchBox({
-    Key key,
-    @required this.size,
-  }) : super(key: key);
+  const HeaderWithSearchBox({Key key, @required this.size, this.addSym})
+      : super(key: key);
 
   final Size size;
+  final Function addSym;
 
   @override
   _HeaderWithSearchBoxState createState() => _HeaderWithSearchBoxState();
@@ -79,8 +77,8 @@ class _HeaderWithSearchBoxState extends State<HeaderWithSearchBox> {
                       onSubmitted: (value) {
                         setState(() {
                           _controller.text = "";
-                          symptomList.add(value);
                         });
+                        widget.addSym(value);
                       },
                       controller: _controller,
                       decoration: InputDecoration(

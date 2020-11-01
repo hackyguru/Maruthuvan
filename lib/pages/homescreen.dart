@@ -29,6 +29,9 @@ class _HomeScreenState extends State<HomeScreen> {
         body: Column(children: [
           HeaderWithSearchBox(
             size: MediaQuery.of(context).size,
+            addSym: (value) => setState(() {
+              symptomList.add(value);
+            }),
           ),
           Padding(
             padding: EdgeInsets.symmetric(horizontal: 30, vertical: 0),
