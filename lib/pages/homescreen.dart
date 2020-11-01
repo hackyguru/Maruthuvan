@@ -45,20 +45,23 @@ class _HomeScreenState extends State<HomeScreen> {
                   textAlign: TextAlign.left,
                 ),
               ),
-              Container(
-                height: 300,
-                child: ListView(
-                  children: show
-                      .map((String item) => CustomCard(
-                          color: Color(0xFF0C9869).withOpacity(0.7),
-                          data: item,
-                          funct: () {
-                            setState(() {
-                              symptomList.remove(item);
-                            });
-                          }))
-                      .toList(),
-                  itemExtent: 80,
+              SingleChildScrollView(
+                scrollDirection: Axis.vertical,
+                child: Container(
+                  height: 300,
+                  child: ListView(
+                    children: show
+                        .map((String item) => CustomCard(
+                            color: Color(0xFF0C9869).withOpacity(0.7),
+                            data: item,
+                            funct: () {
+                              setState(() {
+                                symptomList.remove(item);
+                              });
+                            }))
+                        .toList(),
+                    itemExtent: 80,
+                  ),
                 ),
               )
             ]),

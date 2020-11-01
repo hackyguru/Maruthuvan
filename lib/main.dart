@@ -34,7 +34,6 @@ class _MainAppState extends State<MainApp> {
             setState(() {
               _index = index;
               _pageController.jumpToPage(index);
-              
             });
           }),
       bottomNavigationBar: CurvedNavigationBar(
