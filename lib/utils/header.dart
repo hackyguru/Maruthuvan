@@ -94,7 +94,7 @@ class _HeaderWithSearchBoxState extends State<HeaderWithSearchBox> {
                   PopupMenuButton<String>(
                     icon: Icon(Icons.arrow_downward),
                     onSelected: (String value) {
-                      _controller.text = value;
+                      widget.addSym(value);
                     },
                     itemBuilder: (BuildContext context) {
                       return common.map<PopupMenuItem<String>>((String value) {
